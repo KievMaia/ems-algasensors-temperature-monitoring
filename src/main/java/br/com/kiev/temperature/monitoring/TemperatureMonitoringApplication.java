@@ -1,4 +1,4 @@
-package br.com.kiev.temperaturemonitoring;
+package br.com.kiev.temperature.monitoring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
