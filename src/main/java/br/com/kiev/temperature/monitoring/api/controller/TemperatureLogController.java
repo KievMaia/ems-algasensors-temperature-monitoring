@@ -2,8 +2,6 @@ package br.com.kiev.temperature.monitoring.api.controller;
 
 import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogOutput;
 import br.com.kiev.temperature.monitoring.domain.model.SensorId;
-import br.com.kiev.temperature.monitoring.domain.model.TemperatureLog;
-import br.com.kiev.temperature.monitoring.domain.repository.TemperatureLogRepository;
 import br.com.kiev.temperature.monitoring.domain.service.TemperatureLogService;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
