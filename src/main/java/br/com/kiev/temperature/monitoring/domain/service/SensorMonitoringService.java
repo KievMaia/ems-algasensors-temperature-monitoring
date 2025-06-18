@@ -6,8 +6,11 @@ import br.com.kiev.temperature.monitoring.domain.model.SensorMonitoring;
 import br.com.kiev.temperature.monitoring.domain.repository.SensorMonitoringRepository;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.time.Duration;
 
 import static br.com.kiev.temperature.monitoring.domain.mapper.SensorMonitoringMapper.toSensorMonitoringOutput;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
@@ -31,8 +34,12 @@ public class SensorMonitoringService {
         this.save(sensorMonitoring);
     }
 
+    @SneakyThrows
     public void disable(TSID sensorId) {
         var sensorMonitoring = this.findByIdOrDefault(sensorId);
+        if(!sensorMonitoring.getEnable()) {
+            Thread.sleep(Duration.ofSeconds(10));
+        }
         sensorMonitoring.disable();
         this.save(sensorMonitoring);
     }
