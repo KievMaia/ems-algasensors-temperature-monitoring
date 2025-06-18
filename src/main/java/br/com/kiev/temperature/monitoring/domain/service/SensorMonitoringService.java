@@ -8,12 +8,10 @@ import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 
 import static br.com.kiev.temperature.monitoring.domain.mapper.SensorMonitoringMapper.toSensorMonitoringOutput;
-import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 
 @Service
 @RequiredArgsConstructor
@@ -28,9 +26,6 @@ public class SensorMonitoringService {
     public void enable(TSID sensorId) {
         var sensorMonitoring = this.findByIdOrDefault(sensorId);
         sensorMonitoring.enable();
-        if (sensorMonitoring.getEnable()) {
-            throw new ResponseStatusException(UNPROCESSABLE_ENTITY);
-        }
         this.save(sensorMonitoring);
     }
 
