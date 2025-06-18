@@ -6,7 +6,6 @@ import br.com.kiev.temperature.monitoring.domain.model.SensorMonitoring;
 import br.com.kiev.temperature.monitoring.domain.repository.SensorMonitoringRepository;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
