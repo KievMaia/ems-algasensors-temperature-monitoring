@@ -10,6 +10,7 @@ import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.Optional;
 
 import static br.com.kiev.temperature.monitoring.domain.mapper.SensorMonitoringMapper.toSensorMonitoringOutput;
 
@@ -25,17 +26,17 @@ public class SensorMonitoringService {
 
     public void enable(TSID sensorId) {
         var sensorMonitoring = this.findByIdOrDefault(sensorId);
-        sensorMonitoring.enable();
+        sensorMonitoring.enabled();
         this.save(sensorMonitoring);
     }
 
     @SneakyThrows
     public void disable(TSID sensorId) {
         var sensorMonitoring = this.findByIdOrDefault(sensorId);
-        if(!sensorMonitoring.getEnable()) {
+        if(!sensorMonitoring.isEnabled()) {
             Thread.sleep(Duration.ofSeconds(10));
         }
-        sensorMonitoring.disable();
+        sensorMonitoring.disabled();
         this.save(sensorMonitoring);
     }
 
@@ -47,9 +48,13 @@ public class SensorMonitoringService {
     public SensorMonitoring findByIdOrDefault(TSID sensorId) {
         return repository.findById(new SensorId(sensorId)).orElse(SensorMonitoring.builder()
                 .id(new SensorId(sensorId))
-                .enable(false)
+                .enabled(false)
                 .lastTemperature(null)
                 .updatedAt(null)
                 .build());
+    }
+
+    public Optional<SensorMonitoring> findById(TSID sensorId) {
+        return repository.findById(new SensorId(sensorId));
     }
 }

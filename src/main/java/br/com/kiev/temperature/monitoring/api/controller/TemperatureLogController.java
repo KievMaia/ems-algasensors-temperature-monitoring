@@ -1,6 +1,6 @@
 package br.com.kiev.temperature.monitoring.api.controller;
 
-import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogOutput;
+import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogData;
 import br.com.kiev.temperature.monitoring.domain.model.SensorId;
 import br.com.kiev.temperature.monitoring.domain.service.TemperatureLogService;
 import io.hypersistence.tsid.TSID;
@@ -20,7 +20,7 @@ public class TemperatureLogController {
     private final TemperatureLogService service;
 
     @GetMapping
-    public Page<TemperatureLogOutput> search(@PathVariable TSID sensorId, @PageableDefault Pageable pageable) {
+    public Page<TemperatureLogData> search(@PathVariable TSID sensorId, @PageableDefault Pageable pageable) {
         return service.search(new SensorId(sensorId), pageable);
     }
 }

@@ -10,7 +10,7 @@ public class SensorMonitoringMapper {
     public static SensorMonitoringOutput toSensorMonitoringOutput(SensorMonitoring sensorMonitoring) {
         return SensorMonitoringOutput.builder()
                 .id(sensorMonitoring.getId().getValue())
-                .enable(sensorMonitoring.getEnable())
+                .enable(sensorMonitoring.getEnabled())
                 .lastTemperature(sensorMonitoring.getLastTemperature())
                 .updatedAt(sensorMonitoring.getUpdatedAt())
                 .build();

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 
@@ -21,13 +22,18 @@ public class SensorMonitoring {
     @AttributeOverride(name = "value", column = @Column(name = "id", columnDefinition = "bigint"))
     private SensorId id;
     private Double lastTemperature;
+    @UpdateTimestamp
     private OffsetDateTime updatedAt;
-    private Boolean enable;
+    private Boolean enabled;
 
-    public void enable() {
-        this.enable = true;
+    public void enabled() {
+        this.enabled = true;
     }
-    public void disable() {
-        this.enable = false;
+    public void disabled() {
+        this.enabled = false;
+    }
+
+    public boolean isEnabled() {
+        return Boolean.TRUE.equals(enabled);
     }
 }

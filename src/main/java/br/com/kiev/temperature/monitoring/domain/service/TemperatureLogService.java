@@ -1,6 +1,6 @@
 package br.com.kiev.temperature.monitoring.domain.service;
 
-import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogOutput;
+import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogData;
 import br.com.kiev.temperature.monitoring.domain.mapper.TemperatureLogMapper;
 import br.com.kiev.temperature.monitoring.domain.model.SensorId;
 import br.com.kiev.temperature.monitoring.domain.repository.TemperatureLogRepository;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class TemperatureLogService {
     private final TemperatureLogRepository repository;
 
-    public Page<TemperatureLogOutput> search(SensorId sensorId, Pageable pageable) {
+    public Page<TemperatureLogData> search(SensorId sensorId, Pageable pageable) {
         var temperatureLogs = repository.findAllBySensorId(sensorId, pageable);
         return temperatureLogs.map(TemperatureLogMapper::toTemperatureLogOutput);
     }
