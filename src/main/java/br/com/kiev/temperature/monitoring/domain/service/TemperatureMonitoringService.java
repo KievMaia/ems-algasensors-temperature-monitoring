@@ -1,11 +1,7 @@
 package br.com.kiev.temperature.monitoring.domain.service;
 
 import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogData;
-import br.com.kiev.temperature.monitoring.domain.model.SensorId;
 import br.com.kiev.temperature.monitoring.domain.model.SensorMonitoring;
-import br.com.kiev.temperature.monitoring.domain.model.TemperatureLog;
-import br.com.kiev.temperature.monitoring.domain.model.TemperatureLogId;
-import br.com.kiev.temperature.monitoring.domain.repository.SensorMonitoringRepository;
 import br.com.kiev.temperature.monitoring.domain.repository.TemperatureLogRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

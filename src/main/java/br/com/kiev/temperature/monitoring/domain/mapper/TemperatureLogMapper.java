@@ -4,7 +4,6 @@ import br.com.kiev.temperature.monitoring.api.model.reponse.TemperatureLogData;
 import br.com.kiev.temperature.monitoring.domain.model.SensorId;
 import br.com.kiev.temperature.monitoring.domain.model.TemperatureLog;
 import br.com.kiev.temperature.monitoring.domain.model.TemperatureLogId;
-import org.springframework.stereotype.Component;
 
 public class TemperatureLogMapper {
 
